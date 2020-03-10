@@ -100,6 +100,8 @@ Call Procedure 1
 CALL "oauth".insert_when_unique(123,'abc','def');
 ```
 
+## Part 5: Progress Refresh
+
 Updated ```passport-setup.js``` script
 ```js
 /*
@@ -143,5 +145,3 @@ User.query(`CALL "oauth".insert_when_unique(${profile.id},
 
             });
 ```
-
-## Part 5: 
