@@ -145,3 +145,5 @@ User.query(`CALL "oauth".insert_when_unique(${profile.id},
 
             });
 ```
+
+## Part 6: Redirect
