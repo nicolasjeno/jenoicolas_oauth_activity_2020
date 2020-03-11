@@ -206,7 +206,24 @@ router.get('/', authCheck, (req,res)=>{
 });
 ```
 
-3. Check if all slugs/routes redirecting to the correct target slugs
+3. Update ```config/passport-user.js``` deserializeUser method
+```js
+passport.deserializeUser((id, done)=>{
+    //Who's id is this?
+    User.query(`select row_to_json (u) from ( SELECT "oauth".findById(${id}) as user) u;`,(err,res)=>{
+        if(err){
+            console.log(err);
+        }else{                        
+            const user = res.rows[0].row_to_json.user;
+            console.log(">>>> deserializeUser >>>>> ",user);
+            done(null, user); 
+        }        
+    });
+});
+```
+For more information about PostgreSQL JSON Functions and Operators e.g. ```row_to_json```, view the link [here](https://www.postgresql.org/docs/9.5/functions-json.html).
+
+4. Check if all slugs/routes redirecting to the correct target slugs
 * Before Logging in (note: need to clear cache)
 - [] Navigate to ```http://localhost:3000/profile``` then our app will *redirect* to ```http://localhost:3000/auth/login```.
 - [] Navigate to ```http://localhost:3000/auth/login``` and login using google then our app will ask your gmail account. If google successfully verified the account then our app will *redirect* to ```http://localhost:3000/profile```.
