@@ -252,3 +252,60 @@ router.get('/', authCheck, (req,res)=>{
         extra information about you
     </p>
 ```
+
+## Part 8: User Logout
+
+1. Update logout handler
+```js
+// auth logout
+router.get('/logout',(req, res)=>{
+    // handle with passport
+    // res.send('logging out');
+    req.logout();
+    res.redirect('/');
+});
+```
+
+2. Fixed navigation links. Show a menu only when needed.
+Example:
+* No Logout link if the user is in slug:```http://localhost:3000/``` and the user was not yet log in
+
+3. Add profile picture
+
+```js
+// views/profile.ejs
+...
+<h1>Welcome to your profile, <%= user._name %> </h1>    
+<p>
+    extra information about you
+    <img src="<%= user._picture %>" alt="picture">
+    <p>This is your profile thumbnail</p>
+</p>
+...
+```
+
+OAuth Exercises (Part 5-8)
+- [X] OAuth_Ex4: Create slugs for the following schema. Make sure that all slugs must have a hyperlink inside ```profile.ejs```.
+
+> Human Resource Schema
+
+| Slugs                            | Descriptions                                      | Views (.ejs)    |
+| -------------------------------- |:-------------------------------------------------:|:---------------:|
+| localhost:3000/hr/emp            | A web page that display the list of employees     | employee.ejs    |
+| localhost:3000/hr/dept           | A web page that display the list of departments   | department.ejs  |
+| localhost:3000/hr/empdept        | A web page that display the firstname, lastname, department number, and department name for each employee   | empdept.ejs  |
+| localhost:3000/hr/salary         | A web page that display the name (firstname and lastname) for those employees who gets more salary than the employee whose ID is 135.   | salary.ejs  |
+
+> Northwind Schema
+
+| Slugs                            | Descriptions                                      | Views (.ejs)    |
+| ---------------------------------- |:-------------------------------------------------:|:---------------:|
+| localhost:3000/northwind/prod      | A web page that display the list of product       | product.ejs     |
+| localhost:3000/northwind/cat       | A web page that display the list of category      | category.ejs    |
+| localhost:3000/northwind/prodcat   | A web page that display the product name, unit price, category id, and category name for each product   | prodcat.ejs  |
+| localhost:3000/northwind/expensive | A web page that display Product list (name, unit price) of twenty most expensive products.   | expensive.ejs  |
+
+> Note: Consider [Simple-DataTables](https://github.com/fiduswriter/Simple-DataTables) for a lightweight, extendable, dependency-free javascript HTML table plugin. Similar to jQuery DataTables, ***but without the jQuery dependency***.
+
+- [X] OAuth_Ex5: Add five more strategies. (e.g. Facebook, Twitter, Github, etc.)
+- [X] OAuth_Ex6: Push to Heroku (AppName: ```lastname-oauth.herokuapp.com``` )

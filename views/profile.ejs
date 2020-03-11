@@ -8,17 +8,24 @@
 </head>
 <body>
     
-    <a href="/auth/logout">Logout</a>
-    <br>
-    <a href="/auth/login">Login</a>
-    <br>
-    <a href="/">Homepage</a>
-    <br>
-    <hr>
+    <% if(user) { %>
+        <a href="/auth/logout">Logout</a>    
+        <br>
+        <% } else { %>
+        <a href="/auth/login">Login</a>
+        <br>
+        <% } %>
+        <a href="/">Homepage</a>
+        <br>
+        <a href="/profile">Profile</a>
+        <br>
+        <hr>
 
     <h1>Welcome to your profile, <%= user._name %> </h1>    
     <p>
         extra information about you
+        <img src="<%= user._picture %>" alt="picture">
+        <p>This is your profile thumbnail</p>
     </p>
 
 </body>
