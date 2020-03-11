@@ -233,3 +233,22 @@ For more information about PostgreSQL JSON Functions and Operators e.g. ```row_t
 * After a successful login
 
   - Navigate to ```http://localhost:3000/auth/login``` then our app will *redirect* to ```http://localhost:3000/profile```.
+
+## Part 7: Viewing Profile
+
+1. Update profile route. Use ```res.render``` instead re.send. The second argument contains a json object that we will pass to the profile view page.
+```js
+router.get('/', authCheck, (req,res)=>{
+    const user = req.user;    
+    //res.send('you are logged in, this is your profile - ' + user._name);
+    res.render('profile',{ user: req.user });
+});
+```
+
+2. Create ```views/profile.ejs```.
+```html
+    <h1>Welcome to your profile, <%= user._name %> </h1>    
+    <p>
+        extra information about you
+    </p>
+```
