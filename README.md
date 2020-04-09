@@ -278,7 +278,7 @@ Example:
 <h1>Welcome to your profile, <%= user._name %> </h1>    
 <p>
     extra information about you
-    <img src="<%= user._picture %>" alt="picture">
+    <img src="<%= user._picture.jpg %>" alt="picture">
     <p>This is your profile thumbnail</p>
 </p>
 ...
