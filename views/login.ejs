@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    
+    <style>
+        body {
+            margin: auto;
+            background-color: dimgrey;
+        }
+        a {
+            color: cornsilk;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: larger;
+            margin: 50px;
+        }
+        h1 {
+            color: cornsilk;
+            font-family: "Raleway", sans-serif;
+            height: 100%;
+            text-align: center;
+            margin-top: 100%;
+        }
+        p {
+            text-align: center;
+            color: cornsilk;
+            margin-top: 10px;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+        <div class="w3-display-middle">
+            <h1 class="w3-jumbo w3-animate-top">Welcome to My OAUTH Project!</h1>
+            <hr class="w3-border-white" style="margin:auto;width:40%">
+            <p class="w3-large w3-center">Jeno M. Nicolas</p>
+        </div>
+    </div>
+
+    <% if(user) { %>
+    <a href="/auth/logout">Logout</a>    
+    <br>
+    <% } else { %>
+    <a href="/auth/login">Login</a>
+    <br>
+    <% } %>
+    <a href="/">Homepage</a>
+    <br>
+    <a href="/profile">Profile</a>
+    <br>
+    <hr>
+    <a href="/auth/google">Login using Google+</a>
+</body>
+</html>
